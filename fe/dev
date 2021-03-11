@@ -1,0 +1,3 @@
+environment = "dev"
+web_s3_bucket = "web-dev.web2.babaucanbiet.com"
+hinh_s3_bucket = "hinh-dev.web2.babaucanbiet.com"

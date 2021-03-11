@@ -1,0 +1,3 @@
+environment = "prod"
+web_s3_bucket = "web.web2.babaucanbiet.com"
+hinh_s3_bucket = "hinh.web2.babaucanbiet.com"
