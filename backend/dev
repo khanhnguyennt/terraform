@@ -1,1 +1,4 @@
 environment = "dev"
+db_host = "rds.local-dev.web2.babaucanbiet.com"
+db_user = "app"
+db_name = "test"

@@ -7,3 +7,5 @@ data "terraform_remote_state" "vpc" {
     key            = "env:/${var.environment}/network.tfstate"
   }
 }
+
+data "aws_caller_identity" "current" {}

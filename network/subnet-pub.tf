@@ -9,11 +9,3 @@ resource "aws_subnet" "pub" {
     Name = "public-${var.zone_characters[count.index]}"
   }
 }
-
-# variable "public_subnets" {
-#   default = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
-# }
-
-variable "zone_characters" {
-  default = ["a", "b", "c"]
-}

@@ -3,8 +3,8 @@ resource "aws_ecs_task_definition" "main" {
   container_definitions = <<-EOT
     [
         {
-            "name": "nginx",
-            "image": "nginx:latest",
+            "name": "node",
+            "image": "node:latest",
             "essential": true,
             "portMappings": [
                 { "containerPort": 80 }
@@ -13,11 +13,19 @@ resource "aws_ecs_task_definition" "main" {
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/nginx",
+                    "awslogs-group": "/ecs/node",
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "test"
                 }
-            }
+            },
+            "secrets": [
+				{ "name": "PASS", "valueFrom": "arn:aws:ssm:ap-southeast-1:${data.aws_caller_identity.current.account_id}:parameter/rds/app-password" }
+			],
+			"environment": [
+				{ "name": "HOST", "value": "${var.db_host}" },
+				{ "name": "USER", "value": "${var.db_user}" },
+				{ "name": "DB", "value": "${var.db_name}" }
+			]
         }
     ]
     EOT
