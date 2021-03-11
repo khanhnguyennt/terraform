@@ -9,7 +9,3 @@ resource "aws_subnet" "priv" {
   }
 }
 
-# variable "private_subnets" {
-#   default = ["10.1.11.0/24", "10.1.12.0/24", "10.1.13.0/24"]
-# }
-

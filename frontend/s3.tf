@@ -37,15 +37,15 @@ POLICY
 
 }
 
-# hinh
-resource "aws_s3_bucket" "hinh" {
-  bucket = var.hinh_s3_bucket
+# image
+resource "aws_s3_bucket" "image" {
+  bucket = var.image_s3_bucket
   acl    = "private"
   force_destroy = true
 }
 
-resource "aws_s3_bucket_public_access_block" "hinh" {
-  bucket = aws_s3_bucket.hinh.id
+resource "aws_s3_bucket_public_access_block" "image" {
+  bucket = aws_s3_bucket.image.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -53,8 +53,8 @@ resource "aws_s3_bucket_public_access_block" "hinh" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_policy" "hinh" {
-  bucket = aws_s3_bucket.hinh.id
+resource "aws_s3_bucket_policy" "image" {
+  bucket = aws_s3_bucket.image.id
 
   policy = <<POLICY
 {
@@ -68,7 +68,7 @@ resource "aws_s3_bucket_policy" "hinh" {
         "AWS": "${aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn}"
       },
       "Action": "s3:GetObject",
-      "Resource": "${aws_s3_bucket.hinh.arn}/*"
+      "Resource": "${aws_s3_bucket.image.arn}/*"
     }
   ]
 }

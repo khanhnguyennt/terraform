@@ -9,8 +9,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   origin {
-    domain_name = aws_s3_bucket.hinh.bucket_regional_domain_name
-    origin_id   = aws_s3_bucket.hinh.id
+    domain_name = aws_s3_bucket.image.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.image.id
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       path_pattern = "/image/*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.hinh.id
+    target_origin_id = aws_s3_bucket.image.id
 
     forwarded_values {
       query_string = false

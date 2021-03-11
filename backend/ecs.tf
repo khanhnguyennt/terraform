@@ -41,8 +41,6 @@ resource "aws_ecs_service" "main" {
     security_groups = [aws_security_group.main.id]
   }
 
-  #   iam_role        = "arn:aws:iam::371835366947:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
-
   load_balancer {
     target_group_arn = aws_lb_target_group.main.arn
     container_name   = "nginx"
